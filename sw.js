@@ -6,11 +6,11 @@ self.addEventListener('install', event => {
     caches.open(cacheName)
       .then(cache => {
         cache.addAll([
-          'about_us.html',
-          'contact_us.html',
-          'index.html',
-          'staff.html',
-          'main.js',
+          './about_us.html',
+          './contact_us.html',
+          './index.html',
+          './staff.html',
+          './main.js',
           './styles/about_us.css',
           './styles/contact_us.css',
           './styles/header.css',
