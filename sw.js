@@ -1,4 +1,4 @@
-let cacheName = 'lorem_v22';
+let cacheName = 'lorem_v1';
 
 self.addEventListener('install', event => {
   
@@ -19,18 +19,6 @@ self.addEventListener('install', event => {
   )
 })
 
-
-self.addEventListener('fetch', event => {
-
-  event.respondWith(
-    caches.match(event.request)
-      .then(response => {
-        if (response) return response;
-        return fetch(event.request)
-      })
-  )
-})
-
 self.addEventListener('activate', event => {
   event.waitUntil(
     caches.keys().then(cacheNames => {
@@ -44,3 +32,17 @@ self.addEventListener('activate', event => {
     })
   );
 });
+
+self.addEventListener('fetch', event => {
+
+  event.respondWith(
+    fetch(event.request)
+      .catch(() => caches.match(event.request))
+    // caches.match(event.request)
+    //   .then(response => {
+    //     if (response) return response;
+    //     return fetch(event.request)
+    //   })
+  )
+});
+
