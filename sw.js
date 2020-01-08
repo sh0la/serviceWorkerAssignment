@@ -1,6 +1,7 @@
+let cacheName = 'lorem_v1';
 
 self.addEventListener('install', event => {
-  let cacheName = 'lorem_v1';
+  
   event.waitUntil(
     caches.open(cacheName)
       .then(cache => {
@@ -16,4 +17,10 @@ self.addEventListener('install', event => {
          console.log(error);
       })
   )
+})
+
+
+self.addEventListener('fetch', event => {
+  
+  event.respondWith(caches.match(cacheName))
 })
