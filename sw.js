@@ -11,6 +11,12 @@ self.addEventListener('install', event => {
           'index.html',
           'staff.html',
           'main.js',
+          './styles/about_us.css',
+          './styles/contact_us.css',
+          './styles/header.css',
+          './styles/index.css',
+          './styles/normalize.css',
+          './styles/staff.css'
         ]);
       })
       .catch(error => {
@@ -36,13 +42,15 @@ self.addEventListener('activate', event => {
 self.addEventListener('fetch', event => {
 
   event.respondWith(
-    fetch(event.request)
-      .catch(() => caches.match(event.request))
-    // caches.match(event.request)
-    //   .then(response => {
-    //     if (response) return response;
-    //     return fetch(event.request)
-    //   })
+    caches.match(event.request)
+      .then(response => {
+        if (response) {
+          console.log('this was in cache')
+          return response
+        };
+        console.log('not cache')
+        return fetch(event.request)
+      })
   )
 });
 
