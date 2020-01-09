@@ -10,7 +10,14 @@ const CacheFiles = [
   './styles/header.css',
   './styles/index.css',
   './styles/normalize.css',
-  './styles/staff.css'
+  './styles/staff.css',
+  './images/cat1.jpg',
+  './images/cat2.jpg',
+  './images/cat3.jpg',
+  './images/kat1.jpg',
+  './images/kat2.jpg',
+  './images/kat3.jpg',
+  './images/favicon.png'
 ];
 
 self.addEventListener('install', event => {
