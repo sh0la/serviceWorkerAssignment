@@ -22,8 +22,8 @@ self.addEventListener('install', event => {
       .catch(error => {
          console.log(error);
       })
-  )
-})
+  );
+});
 
 self.addEventListener('activate', event => {
   event.waitUntil(
@@ -54,4 +54,3 @@ self.addEventListener('fetch', event => {
       })
   );
 });
-
